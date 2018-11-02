@@ -1,10 +1,7 @@
 package com.json.jdbcdemo;
 
 import com.alibaba.fastjson.JSON;
-import com.json.jdbcdemo.mapper.ImageMapper;
-import com.json.jdbcdemo.mapper.UserMapper;
-import com.json.jdbcdemo.pojo.Images;
-import com.json.jdbcdemo.pojo.User;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,26 +19,10 @@ import java.util.List;
 public class JdbcdemoApplicationTests {
 
 
-    @Autowired
-    UserMapper userMapper;
-    @Autowired
-    ImageMapper imageMapper;
 
     @Test
     public void contextLoads() {
 
-    }
-
-    @Test
-    public void tesetGetAll(){
-        List<User> all = userMapper.getAll();
-        System.out.println(all.toString());
-    }
-
-    @Test
-    public void tesetGetAllImages(){
-        List<Images> all = imageMapper.getImages();
-        System.out.println(all.toString());
     }
 
 }

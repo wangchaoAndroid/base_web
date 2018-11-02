@@ -14,8 +14,8 @@
 <link href="/h-ui.admin/css/H-ui.login.css" rel="stylesheet" type="text/css" />
 <link href="/h-ui.admin/css/style.css" rel="stylesheet" type="text/css" />
 <link href="/lib/Hui-iconfont/1.0.8/iconfont.css" rel="stylesheet" type="text/css" />
-  <link href="/ribbon/style.css" rel="stylesheet" type="text/css" media="all"/>
-  <link href="/ribbon/iconfont.css" rel="stylesheet" type="text/css" />
+  <link href="/lib/ribbon/style.css" rel="stylesheet" type="text/css" media="all"/>
+  <link href="/lib/ribbon/iconfont.css" rel="stylesheet" type="text/css" />
 
   <!--[if IE 6]>
 <script type="text/javascript" src="/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
@@ -99,6 +99,12 @@
 
 
 <script type="text/javascript" >
+    //判断当前窗口是否有顶级窗口，如果有就让当前的窗口的地址栏发生变化，
+    function loadTopWindow() {
+        if (window.top != null && window.top.document.URL != document.URL) {
+            window.top.location = document.URL; //这样就可以让登陆窗口显示在整个窗口了
+        }
+    }
 
     // 登录
     function login() {
