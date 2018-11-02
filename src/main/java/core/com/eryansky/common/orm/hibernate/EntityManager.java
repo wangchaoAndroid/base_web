@@ -345,16 +345,16 @@ public abstract class EntityManager<T, PK extends Serializable> {
 //	}
 //
 //
-//	/**
-//	 * 过滤器查询.
-//	 *
-//	 * @param filters
-//	 *            属性过滤器
-//	 * @return
-//	 * @throws DaoException
-//	 * @throws SystemException
-//	 * @throws ServiceException
-//	 */
+	/**
+	 * 过滤器查询.
+	 *
+	 * @param filters
+	 *            属性过滤器
+	 * @return
+	 * @throws DaoException
+	 * @throws SystemException
+	 * @throws ServiceException
+	 */
 //	@Transactional(readOnly = true)
 //	public List<T> find(final List<PropertyFilter> filters)
 //			throws DaoException, SystemException, ServiceException {

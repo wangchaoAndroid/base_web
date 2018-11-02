@@ -30,7 +30,7 @@ import org.springframework.stereotype.Service;
 * @date 2018-3-16 下午02:12:55 
 *  
 */
-@Service("menuService")
+@Service
 public class MenuServiceImpl extends EntityManager<Menu, Integer> {
 	
 
@@ -43,38 +43,38 @@ public class MenuServiceImpl extends EntityManager<Menu, Integer> {
 	/**
 	 * 根据登录用户获取菜单树
 	 */
-//	public List<MenuTreeNode> getNavMenuTreeByUserId(Integer id) throws DaoException, SystemException, ServiceException {
-//        List<MenuTreeNode> nodes = Lists.newArrayList();
-//        List<Menu> userMenus = Lists.newArrayList();
-//        User user = userService.getUserById(id);
-//        if (user != null && id==1) { // 超级管理员
-//        	userMenus = this.getByParentId(null,1);
-//        } else if (user != null) {
-//        	userMenus = this.getMenusByUserId(id);
-//        }
-//
-//        for(Menu menu : userMenus){
-//            if(user != null && id==1){// 超级管理员
-//            	MenuTreeNode node =  this.menuToTreeNode(menu);
-//                if(node !=null){
-//                    nodes.add(node);
-//                }
-//            } else{
-//                if(menu != null && menu.getParentMenu() == null){
-//                	MenuTreeNode node =  this.menuToTreeNode(userMenus,menu);
-//                    if(node !=null){
-//                        nodes.add(node);
-//                    }
-//                }
-//            }
-//        }
-//        return nodes;
-//	}
+	public List<MenuTreeNode> getNavMenuTreeByUserId(Integer id) throws DaoException, SystemException, ServiceException {
+        List<MenuTreeNode> nodes = Lists.newArrayList();
+        List<Menu> userMenus = Lists.newArrayList();
+        User user = userService.getUserById(id);
+        if (user != null && id==1) { // 超级管理员  no.1
+        	userMenus = this.getByParentId(null,1);
+        } else if (user != null) {
+        	//userMenus = this.getMenusByUserId(id);
+        }
+
+        for(Menu menu : userMenus){
+            if(user != null && id==1){// 超级管理员
+            	MenuTreeNode node =  this.menuToTreeNode(menu);
+                if(node !=null){
+                    nodes.add(node);
+                }
+            } else{
+                if(menu != null && menu.getParentMenu() == null){
+                	MenuTreeNode node =  this.menuToTreeNode(userMenus,menu);
+                    if(node !=null){
+                        nodes.add(node);
+                    }
+                }
+            }
+        }
+        return nodes;
+	}
 //
 	/**
 	 * 根据用户id获取菜单列表
 	 */
-	@SuppressWarnings("unchecked")
+//	@SuppressWarnings("unchecked")
 //	public List<Menu> getMenusByUserId(Integer userId) throws DaoException, SystemException, ServiceException {
 //
 //		Parameter parameter = new Parameter(userId, 1);
@@ -94,25 +94,13 @@ public class MenuServiceImpl extends EntityManager<Menu, Integer> {
 	/**
 	 * 根据父级id和状态获取菜单列表
 	 */
-//	public List<Menu> getByParentId(Integer parentId, Integer status) throws DaoException, SystemException, ServiceException {
-//		if(status == null){
-//			status = 1;
-//		}
-//		StringBuilder hql = new StringBuilder();
-//		Parameter parameter = new Parameter();
-//		hql.append("from Menu r where r.status = :status ");
-//		parameter.put("status",status);
-//		hql.append(" and r.parentMenu");
-//		if (parentId == null) {
-//			hql.append(" is null ");
-//		} else {
-//			hql.append(".id = :parentId ");
-//		    parameter.put("parentId",parentId);
-//		}
-//		hql.append(" order by r.orderNo desc");
-//		List<Menu> list = menuMapper.find(hql.toString(), parameter);
-//		return list;
-//	}
+	public List<Menu> getByParentId(Integer parentId, Integer status) throws DaoException, SystemException, ServiceException {
+		if(status == null){
+			status = 1;
+		}
+		List<Menu> list = menuMapper.find(parentId, status);
+		return list;
+	}
 //
 	/**
 	 * 菜单表转为树

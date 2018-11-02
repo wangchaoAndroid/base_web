@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  */
 @SuppressWarnings("serial")
 @Entity
-@Table(name = "operatorinfo")
+@Table(name = "user")
 @JsonIgnoreProperties(value = { "hibernateLazyInitializer" , "handler","fieldHandler","role","organizations","channel",})
 //@Cacheable
 //@Cache(usage=CacheConcurrencyStrategy.READ_WRITE) 

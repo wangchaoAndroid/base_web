@@ -110,7 +110,7 @@ public class LoginController extends SimpleController {
 		WebUtils.setNoCacheHeader(response);
 		List<MenuTreeNode> treeNodes = Lists.newArrayList();
 		Object userId = request.getSession().getAttribute("userId");
-//		treeNodes = menuService.getNavMenuTreeByUserId(Integer.valueOf(userId.toString()));
+		treeNodes = menuService.getNavMenuTreeByUserId(Integer.valueOf(userId.toString()));
 		model.addAttribute("menuTreeNodes", treeNodes);
 		return "/admin/index";
 	}

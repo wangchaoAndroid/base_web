@@ -21,12 +21,13 @@ public class WebAppConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(interceptorConfig).addPathPatterns("/**").excludePathPatterns("/login","/admin/login","/static/");
+        registry.addInterceptor(interceptorConfig).addPathPatterns("/**").excludePathPatterns("/login","/admin/login","/static/**");
     }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/static/**").addResourceLocations("/static/");
+        registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+        WebMvcConfigurer.super.addResourceHandlers(registry);
     }
 
 

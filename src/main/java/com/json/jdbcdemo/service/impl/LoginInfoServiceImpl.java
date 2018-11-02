@@ -60,8 +60,7 @@ public class LoginInfoServiceImpl extends EntityManager<LoginInfo, Integer> {
 	 * @param token
 	 * @return  
 	 */
-//	public AppUser  getAppUserByToken(String token)
-//	{
+//	public AppUser  getAppUserByToken(String token) {
 //		List<PropertyFilter> filters=Lists.newArrayList();
 //		filters.add(new PropertyFilter("EQI_status","1"));
 //		filters.add(new PropertyFilter("EQS_token",token));

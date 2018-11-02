@@ -44,7 +44,7 @@ public class UserServiceImpl extends EntityManager<User, Integer> {
 	*/
 	
     public User login(HttpServletRequest re,String loginName, String password) throws DaoException, SystemException, ServiceException {
-        Parameter parameter = new Parameter(loginName, password, 1);
+//        Parameter parameter = new Parameter(loginName, password, 1);
         List<User> list = userMapper.find(loginName,password);
         User user = null;
         if(!list.isEmpty())
